@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Modules/Scenes/Living_Room/LivingRoom_Concept.png" type="Texture" id=1]
+
+[node name="Living_Room" type="Spatial"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource( 1 )
