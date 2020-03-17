@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lommeregner
+namespace Game
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +23,6 @@ namespace Lommeregner
         public MainWindow()
         {
             InitializeComponent();
-            ModeSelector.SelectedIndex = 0;
         }
     }
 }

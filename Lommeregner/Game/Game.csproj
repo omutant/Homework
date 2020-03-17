@@ -6,9 +6,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Basic_Calc\" />
-    <Folder Include="Shape_Calc\" />
-  </ItemGroup>
-
 </Project>

@@ -5,23 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lommeregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+        Title="MainWindow" Height="300" Width="250">
 
-        <Button Grid.Row="1" Grid.Column="1" Content="Calculator"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="Game"/>
+    <Grid>
+        <Grid x:Name="BaseCalcScreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Mode selection dropdown -->
+            <ComboBox x:Name="ModeSelector" Grid.ColumnSpan="2" SelectionChanged="RouteMode">
+                <ComboBoxItem Tag="Basic" Content="Basic"/>
+                <ComboBoxItem Tag="Shape" Content="Shape"/>
+            </ComboBox>
+
+            <!-- Calculation steps display 
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E" Margin="5">
+                5 / 1 = 5
+            </TextBlock>
+            -->
+
+            <!-- Calculation display -->
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E" Margin="5">
+                5 / 1 = 5
+            </TextBlock>
+
+
+            <!--#region Calc_Buttons -->
+
+            <!-- Numbers buttons -->
+            <Button Grid.Row="3" Grid.Column="0" Content="7"/>
+            <Button Grid.Row="3" Grid.Column="1" Content="8"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="9"/>
+            <Button Grid.Row="4" Grid.Column="0" Content="4"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="5"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="6"/>
+            <Button Grid.Row="5" Grid.Column="0" Content="1"/>
+            <Button Grid.Row="5" Grid.Column="1" Content="2"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="3"/>
+            <Button Grid.Row="6" Grid.Column="1" Content="0"/>
+
+            <!-- Calc signs buttons -->
+            <Button Grid.Row="2" Grid.Column="3" Content="+"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="-"/>
+            <Button Grid.Row="4" Grid.Column="3" Content="*"/>
+            <Button Grid.Row="5" Grid.Column="3" Content="/"/>
+
+            <!-- Calculate button -->
+            <Button Grid.Row="6" Grid.Column="3" Content="="/>
+
+            <!-- Negate button -->
+            <Button Grid.Row="7" Grid.Column="0" Content="+/-"/>
+
+            <!-- Comma button -->
+            <Button Grid.Row="6" Grid.Column="2" Content=","/>
+
+            <!-- Clear button -->
+            <Button Grid.Row="2" Grid.Column="2" Content="CE"/>
+
+            <!-- Parenthesess buttons -->
+            <Button Grid.Row="2" Grid.Column="0" Content="("/>
+            <Button Grid.Row="2" Grid.Column="1" Content=")"/>
+<!--#endRegion Calc_Buttons -->
+            
+        </Grid>
+
+        <Grid x:Name="ShapeCalcScreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Mode selection dropdown -->
+            <ComboBox x:Name="ModeSelector2" Grid.ColumnSpan="2" SelectionChanged="RouteMode">
+                <ComboBoxItem Tag="Basic" Content="Basic"/>
+                <ComboBoxItem Tag="Shape" Content="Shape"/>
+            </ComboBox>
+            
+        </Grid>
 
     </Grid>
 </Window>
