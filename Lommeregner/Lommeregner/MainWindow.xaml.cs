@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lommeregner.Basic_Calc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,39 @@ namespace Lommeregner
     /// </summary>
     public partial class MainWindow : Window
     {
+        KeyboardInput keyIn;
+        ButtonInput butIn;
         public MainWindow()
         {
             InitializeComponent();
-            ModeSelector.SelectedIndex = 0;
+            keyIn = new KeyboardInput();
+            butIn = new ButtonInput();
+
+        }
+
+        public void RouteButton(object sender, RoutedEventArgs e)
+        {
+            object myValue = ((Button)sender).Tag;
+            butIn.ButtonHandler(myValue);
+        }
+
+        public void RouteKey(object sender, KeyEventArgs e)
+        {
+            keyIn.KeyHandler(e.Key);
+        }
+        public void RouteMode(object sender, RoutedEventArgs e)
+        {
+            switch (RouteSelector.SelectedIndex)
+            {
+                case 0:
+                    BaseCalcScreen.Visibility = Visibility.Visible;
+                    ShapeCalcScreen.Visibility = Visibility.Hidden;
+                    break;
+                case 1:
+                    ShapeCalcScreen.Visibility = Visibility.Visible;
+                    BaseCalcScreen.Visibility = Visibility.Hidden;
+                    break;
+            }
         }
     }
 }

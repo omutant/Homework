@@ -5,15 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lommeregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="250">
-
+        Title="MainWindow" Height="300" Width="250"
+        KeyDown="RouteKey">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ScreenNames" Source="Test"/>
+    </Window.Resources>
     <Grid>
-        <Grid x:Name="BaseCalcScreen">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="RouteSelector" SelectionChanged="RouteMode">
+            <ComboBoxItem Tag="Basic" Content="Basic"/>
+            <ComboBoxItem Tag="Shape" Content="Shape"/>
+        </ComboBox>
+
+        <Grid x:Name="BaseCalcScreen" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="63*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.6*"/>
@@ -26,19 +40,9 @@
             </Grid.RowDefinitions>
 
             <!-- Mode selection dropdown -->
-            <ComboBox x:Name="ModeSelector" Grid.ColumnSpan="2" SelectionChanged="RouteMode">
-                <ComboBoxItem Tag="Basic" Content="Basic"/>
-                <ComboBoxItem Tag="Shape" Content="Shape"/>
-            </ComboBox>
-
-            <!-- Calculation steps display 
-            <TextBlock Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E" Margin="5">
-                5 / 1 = 5
-            </TextBlock>
-            -->
 
             <!-- Calculation display -->
-            <TextBlock Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E" Margin="5">
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="24" Foreground="#FF4E4E4E" Margin="12,0,0,0" Grid.Column="3">
                 5 / 1 = 5
             </TextBlock>
 
@@ -46,43 +50,43 @@
             <!--#region Calc_Buttons -->
 
             <!-- Numbers buttons -->
-            <Button Grid.Row="3" Grid.Column="0" Content="7"/>
-            <Button Grid.Row="3" Grid.Column="1" Content="8"/>
-            <Button Grid.Row="3" Grid.Column="2" Content="9"/>
-            <Button Grid.Row="4" Grid.Column="0" Content="4"/>
-            <Button Grid.Row="4" Grid.Column="1" Content="5"/>
-            <Button Grid.Row="4" Grid.Column="2" Content="6"/>
-            <Button Grid.Row="5" Grid.Column="0" Content="1"/>
-            <Button Grid.Row="5" Grid.Column="1" Content="2"/>
-            <Button Grid.Row="5" Grid.Column="2" Content="3"/>
-            <Button Grid.Row="6" Grid.Column="1" Content="0"/>
+            <Button Click="RouteButton" Tag="7" Grid.Row="3" Grid.Column="0" Content="7" Margin="0,0,0,33" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="8" Grid.Row="3" Content="8" Grid.ColumnSpan="2" Margin="62,0,0,33" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="9" Grid.Row="3" Grid.Column="2" Content="9" Grid.ColumnSpan="3" Margin="0,0,62,33" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="4" Grid.Row="4" Grid.Column="0" Content="4"/>
+            <Button Click="RouteButton" Tag="5" Grid.Row="4" Content="5" Grid.ColumnSpan="2" Margin="62,0,0,0"/>
+            <Button Click="RouteButton" Tag="6" Grid.Row="4" Grid.Column="2" Content="6" Grid.ColumnSpan="3" Margin="0,0,62,0"/>
+            <Button Click="RouteButton" Tag="1" Grid.Row="4" Grid.Column="0" Content="1" Margin="0,33,0,0" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="2" Grid.Row="4" Content="2" Grid.ColumnSpan="2" Margin="62,33,0,0" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="3" Grid.Row="4" Grid.Column="2" Content="3" Grid.ColumnSpan="3" Margin="0,33,62,0" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="0" Grid.Row="5" Content="0" Grid.ColumnSpan="2" Margin="62,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Calc signs buttons -->
-            <Button Grid.Row="2" Grid.Column="3" Content="+"/>
-            <Button Grid.Row="3" Grid.Column="3" Content="-"/>
-            <Button Grid.Row="4" Grid.Column="3" Content="*"/>
-            <Button Grid.Row="5" Grid.Column="3" Content="/"/>
+            <Button Click="RouteButton" Tag="+" Grid.Row="1" Grid.Column="4" Content="+" Margin="0,66,0,33" Grid.RowSpan="3"/>
+            <Button Click="RouteButton" Tag="-" Grid.Row="3" Grid.Column="4" Content="-" Margin="0,0,0,33" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="*" Grid.Row="4" Grid.Column="4" Content="*"/>
+            <Button Click="RouteButton" Tag="/" Grid.Row="4" Grid.Column="4" Content="/" Margin="0,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Calculate button -->
-            <Button Grid.Row="6" Grid.Column="3" Content="="/>
+            <Button Click="RouteButton" Tag="=" Grid.Row="5" Grid.Column="4" Content="=" Margin="0,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Negate button -->
-            <Button Grid.Row="7" Grid.Column="0" Content="+/-"/>
+            <Button Click="RouteButton" Tag="Negate" Grid.Row="5" Grid.Column="0" Content="+/-" Margin="0,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Comma button -->
-            <Button Grid.Row="6" Grid.Column="2" Content=","/>
+            <Button Click="RouteButton" Tag="," Grid.Row="5" Grid.Column="2" Content="," Grid.ColumnSpan="3" Margin="0,33,62,0" Grid.RowSpan="2"/>
 
             <!-- Clear button -->
-            <Button Grid.Row="2" Grid.Column="2" Content="CE"/>
+            <Button Click="RouteButton" Tag="Cancel" Grid.Row="1" Grid.Column="2" Content="CE" Grid.ColumnSpan="3" Margin="0,66,62,33" Grid.RowSpan="3"/>
 
             <!-- Parenthesess buttons -->
-            <Button Grid.Row="2" Grid.Column="0" Content="("/>
-            <Button Grid.Row="2" Grid.Column="1" Content=")"/>
-<!--#endRegion Calc_Buttons -->
-            
+            <Button Click="RouteButton" Tag="(" Grid.Row="1" Grid.Column="0" Content="(" Margin="0,66,0,33" Grid.RowSpan="3"/>
+            <Button Click="RouteButton" Tag=")" Grid.Row="1" Content=")" Grid.ColumnSpan="2" Margin="62,66,0,33" Grid.RowSpan="3"/>
+            <!--#endRegion Calc_Buttons -->
+
         </Grid>
 
-        <Grid x:Name="ShapeCalcScreen">
+        <Grid x:Name="ShapeCalcScreen" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -98,13 +102,6 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
-            <!-- Mode selection dropdown -->
-            <ComboBox x:Name="ModeSelector2" Grid.ColumnSpan="2" SelectionChanged="RouteMode">
-                <ComboBoxItem Tag="Basic" Content="Basic"/>
-                <ComboBoxItem Tag="Shape" Content="Shape"/>
-            </ComboBox>
-            
         </Grid>
 
     </Grid>
