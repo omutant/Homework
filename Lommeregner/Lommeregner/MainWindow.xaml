@@ -17,6 +17,7 @@
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
 
+        <!-- Mode selection dropdown -->
         <ComboBox x:Name="RouteSelector" SelectionChanged="RouteMode">
             <ComboBoxItem Tag="Basic" Content="Basic"/>
             <ComboBoxItem Tag="Shape" Content="Shape"/>
@@ -39,11 +40,14 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <!-- Mode selection dropdown -->
+            <!-- Calculation display -->
+            <TextBlock x:Name="CalcText" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" FontSize="14" Foreground="#FFC2C2C2" Grid.Column="0">
+
+            </TextBlock>
 
             <!-- Calculation display -->
-            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="24" Foreground="#FF4E4E4E" Margin="12,0,0,0" Grid.Column="3">
-                5 / 1 = 5
+            <TextBlock x:Name="InputText" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E"  Grid.Column="0">
+
             </TextBlock>
 
 
@@ -71,7 +75,7 @@
             <Button Click="RouteButton" Tag="=" Grid.Row="5" Grid.Column="4" Content="=" Margin="0,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Negate button -->
-            <Button Click="RouteButton" Tag="Negate" Grid.Row="5" Grid.Column="0" Content="+/-" Margin="0,33,0,0" Grid.RowSpan="2"/>
+            <Button Click="RouteButton" Tag="Delete" Grid.Row="5" Grid.Column="0" Content="Del" Margin="0,33,0,0" Grid.RowSpan="2"/>
 
             <!-- Comma button -->
             <Button Click="RouteButton" Tag="," Grid.Row="5" Grid.Column="2" Content="," Grid.ColumnSpan="3" Margin="0,33,62,0" Grid.RowSpan="2"/>

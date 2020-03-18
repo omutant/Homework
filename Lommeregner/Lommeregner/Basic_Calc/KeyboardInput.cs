@@ -9,59 +9,90 @@ namespace Lommeregner.Basic_Calc
 {
     class KeyboardInput
     {
+        CalculatorLogic _calLog;
 
-
+        public KeyboardInput()
+        {
+            _calLog = new CalculatorLogic();
+        }
 
         public void KeyHandler(Key input)
         {
-            #region numKeys
+            //MessageBox.Show(input.ToString());
             switch (input)
             {
+                #region numKeys
                 case Key.NumPad0:
                 case Key.D0:
-                    MessageBox.Show("0 Pressed!");
+                    _calLog.NumInput("0");
                     break;
                 case Key.NumPad1:
                 case Key.D1:
-                    MessageBox.Show("1 Pressed!");
+                    _calLog.NumInput("1");
                     break;
                 case Key.NumPad2:
                 case Key.D2:
-                    MessageBox.Show("2 Pressed!");
+                    _calLog.NumInput("2");
                     break;
                 case Key.NumPad3:
                 case Key.D3:
-                    MessageBox.Show("3 Pressed!");
+                    _calLog.NumInput("3");
                     break;
                 case Key.NumPad4:
                 case Key.D4:
-                    MessageBox.Show("4 Pressed!");
+                    _calLog.NumInput("4");
                     break;
                 case Key.NumPad5:
                 case Key.D5:
-                    MessageBox.Show("5 Pressed!");
+                    _calLog.NumInput("5");
                     break;
                 case Key.NumPad6:
                 case Key.D6:
-                    MessageBox.Show("6 Pressed!");
+                    _calLog.NumInput("6");
                     break;
                 case Key.NumPad7:
                 case Key.D7:
-                    MessageBox.Show("7 Pressed!");
+                    _calLog.NumInput("7");
                     break;
                 case Key.NumPad8:
                 case Key.D8:
-                    MessageBox.Show("8 Pressed!");
+                    _calLog.NumInput("8");
                     break;
                 case Key.NumPad9:
                 case Key.D9:
-                    MessageBox.Show("9 Pressed!");
+                    _calLog.NumInput("9");
                     break;
+                #endregion numKeys
+                #region signKeys
+                case Key.Add:
+                case Key.OemPlus:
+                    _calLog.SignInput("+");
+                    break;
+                case Key.Subtract:
+                case Key.OemMinus:
+                    _calLog.SignInput("-");
+                    break;
+                case Key.Multiply:
+                    _calLog.SignInput("*");
+                    break;
+                case Key.Divide:
+                    _calLog.SignInput("/");
+                    break;
+                #endregion signKeys
+                #region specialKeys
+                case Key.Back:
+                case Key.Delete:
+                    _calLog.RemoveInput();
+                    break;
+                case Key.Return:
+                    _calLog.CalculationSetup(true);
+                    break;
+                    #endregion specialKeys
             }
-            #endregion numKeys
+
 
         }
-    
-        
+
+
     }
 }
