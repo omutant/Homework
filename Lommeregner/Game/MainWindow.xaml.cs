@@ -20,9 +20,22 @@ namespace Game
     /// </summary>
     public partial class MainWindow : Window
     {
+        Input input;
+        Rectangle tile;
         public MainWindow()
         {
             InitializeComponent();
+            input = new Input();
+            tile = new Rectangle();
+            tile.Width = 500;
+            tile.Height = 500;
+            tile.Fill = new SolidColorBrush(Colors.Red); ;
+            MainMap.Children.Add(tile);
+        }
+        public void RouteKey(object sender, KeyEventArgs e)
+        {
+            //MessageBox.Show(e.Key.ToString());
+            input.KeyHandler(e.Key);
         }
     }
 }

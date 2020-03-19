@@ -21,26 +21,34 @@ namespace Lommeregner
     /// </summary>
     public partial class MainWindow : Window
     {
+
         KeyboardInput keyIn;
         ButtonInput butIn;
+        public CalculatorLogic calLog;
+        public InputHandler inH;
         public MainWindow()
         {
             InitializeComponent();
-            keyIn = new KeyboardInput();
-            butIn = new ButtonInput();
-
+            calLog = new CalculatorLogic();
+            inH = new InputHandler();
+            keyIn = new KeyboardInput(calLog, inH);
+            butIn = new ButtonInput(calLog, inH);
         }
 
+        // Routes all button input to the ButtonInput class
         public void RouteButton(object sender, RoutedEventArgs e)
         {
             object myValue = ((Button)sender).Tag;
             butIn.ButtonHandler(myValue);
         }
 
+        // Routes all Keyboard input to the KeyboardInput class
         public void RouteKey(object sender, KeyEventArgs e)
         {
             keyIn.KeyHandler(e.Key);
         }
+
+        // Handles swapping between the basic calculator and Shape calculator
         public void RouteMode(object sender, RoutedEventArgs e)
         {
             switch (RouteSelector.SelectedIndex)

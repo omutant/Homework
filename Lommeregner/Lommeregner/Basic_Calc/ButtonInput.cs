@@ -7,89 +7,106 @@ namespace Lommeregner.Basic_Calc
 {
     class ButtonInput
     {
-        CalculatorLogic _calLog;
+        readonly CalculatorLogic _calLog;
+        readonly InputHandler _inH;
 
-        public ButtonInput()
+        public ButtonInput(CalculatorLogic calLogic, InputHandler inHandler)
         {
-            _calLog = new CalculatorLogic();
+            _inH = inHandler;
+            _calLog = calLogic;
         }
-        public void ButtonHandler(object stringInput)
-        {
-            //MessageBox.Show(stringInput.GetType() + " : " + stringInput);
 
-            switch (stringInput)
+        public void ButtonHandler(object inputTag)
+        {
+            NumberButtonInput(inputTag);
+            SignButtonInput(inputTag);
+            SpecialButtonInput(inputTag);
+        }
+
+        void NumberButtonInput(object inputTag)
+        {
+            switch (inputTag)
+            {
+                #region numberButtons
+                case "0":
+                    _inH.NumInput("0");
+                    break;
+                case "1":
+                    _inH.NumInput("1");
+                    break;
+                case "2":
+                    _inH.NumInput("2");
+                    break;
+                case "3":
+                    _inH.NumInput("3");
+                    break;
+                case "4":
+                    _inH.NumInput("4");
+                    break;
+                case "5":
+                    _inH.NumInput("5");
+                    break;
+                case "6":
+                    _inH.NumInput("6");
+                    break;
+                case "7":
+                    _inH.NumInput("7");
+                    break;
+                case "8":
+                    _inH.NumInput("8");
+                    break;
+                case "9":
+                    _inH.NumInput("9");
+                    break;
+                    #endregion numberButtons
+            }
+        }
+        void SignButtonInput(object inputTag)
+        {
+            switch (inputTag)
             {
                 #region signButtons
                 case "+":
-                    _calLog.SignInput("+");
+                    _inH.SignInput("+");
                     break;
                 case "-":
-                    _calLog.SignInput("-");
+                    _inH.SignInput("-");
                     break;
                 case "*":
-                    _calLog.SignInput("*");
+                    _inH.SignInput("*");
                     break;
                 case "/":
-                    _calLog.SignInput("/");
+                    _inH.SignInput("/");
                     break;
                 case "=":
                     _calLog.CalculationSetup(true);
                     break;
-                #endregion signButtons
-                #region numberButtons
-                case "0":
-                    _calLog.NumInput("0");
-                    break;
-                case "1":
-                    _calLog.NumInput("1");
-                    break;
-                case "2":
-                    _calLog.NumInput("2");
-                    break;
-                case "3":
-                    _calLog.NumInput("3");
-                    break;
-                case "4":
-                    _calLog.NumInput("4");
-                    break;
-                case "5":
-                    _calLog.NumInput("5");
-                    break;
-                case "6":
-                    _calLog.NumInput("6");
-                    break;
-                case "7":
-                    _calLog.NumInput("7");
-                    break;
-                case "8":
-                    _calLog.NumInput("8");
-                    break;
-                case "9":
-                    _calLog.NumInput("9");
-                    break;
-                #endregion numberButtons
+                    #endregion signButtons
+            }
+        }
+        void SpecialButtonInput(object inputTag)
+        {
+            switch (inputTag)
+            {
                 #region specialButtons
                 case "Delete":
-                    _calLog.RemoveInput();
+                    _inH.RemoveInput();
                     break;
                 case "Cancel":
-                    _calLog.Reset();
+                    _inH.Reset();
                     break;
                 case "(":
-                    _calLog.ParentheseesInput("(");
+                    _inH.ParentheseesInput("(");
                     break;
                 case ")":
-                    _calLog.ParentheseesInput(")");
+                    _inH.ParentheseesInput(")");
                     break;
                 case ",":
-                    _calLog.CommaInput();
+                    _inH.CommaInput();
                     break;
-                #endregion specialButtons
-                default:
-                    MessageBox.Show("Error: Key not implemented");
-                    break;
+                    #endregion specialButtons
             }
-            
+
         }
     }
 }

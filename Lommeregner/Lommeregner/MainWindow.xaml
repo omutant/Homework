@@ -23,6 +23,7 @@
             <ComboBoxItem Tag="Shape" Content="Shape"/>
         </ComboBox>
 
+        <!-- Basic Calculator visuals -->
         <Grid x:Name="BaseCalcScreen" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
@@ -40,18 +41,30 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <!-- Calculation display -->
-            <TextBlock x:Name="CalcText" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" FontSize="14" Foreground="#FFC2C2C2" Grid.Column="0">
+            <!-- Calculation display (Small text) -->
+            <TextBlock 
+                x:Name="CalcText" 
+                Grid.Row="0" 
+                Grid.Column="0"
+                Grid.ColumnSpan="4" 
+                HorizontalAlignment="Right" 
+                FontSize="14" 
+                Foreground="#FFC2C2C2" 
+                />
 
-            </TextBlock>
+            <!-- Input display (Big text) -->
+            <TextBlock 
+                x:Name="InputText" 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Grid.ColumnSpan="4" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right" 
+                FontSize="24" 
+                Foreground="#FF4E4E4E"  
+                />
 
-            <!-- Calculation display -->
-            <TextBlock x:Name="InputText" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" Foreground="#FF4E4E4E"  Grid.Column="0">
-
-            </TextBlock>
-
-
-            <!--#region Calc_Buttons -->
+            <!-- #region Calc_Buttons -->
 
             <!-- Numbers buttons -->
             <Button Click="RouteButton" Tag="7" Grid.Row="3" Grid.Column="0" Content="7" Margin="0,0,0,33" Grid.RowSpan="2"/>
@@ -86,10 +99,11 @@
             <!-- Parenthesess buttons -->
             <Button Click="RouteButton" Tag="(" Grid.Row="1" Grid.Column="0" Content="(" Margin="0,66,0,33" Grid.RowSpan="3"/>
             <Button Click="RouteButton" Tag=")" Grid.Row="1" Content=")" Grid.ColumnSpan="2" Margin="62,66,0,33" Grid.RowSpan="3"/>
-            <!--#endRegion Calc_Buttons -->
+            <!-- #endRegion Calc_Buttons -->
 
         </Grid>
 
+        <!-- Shape Calculator visuals -->
         <Grid x:Name="ShapeCalcScreen" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
