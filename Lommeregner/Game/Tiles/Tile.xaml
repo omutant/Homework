@@ -1,10 +1,12 @@
-﻿<UserControl x:Class="Game.Tiles.WallTile"
+﻿<UserControl x:Class="Game.Tiles.Tile"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Game.Tiles"
              mc:Ignorable="d" 
-             d:DesignHeight="128" d:DesignWidth="128">
-    <Rectangle x:Name="tile" Width="128" Height="128" Margin="0,0" Fill="HotPink"/>
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+            
+    </Grid>
 </UserControl>

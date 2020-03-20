@@ -9,16 +9,6 @@
         KeyDown="RouteKey">
     <Canvas Background="Black">
         <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="0,0">
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="0"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="32"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="64"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="96"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="128"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="32" Canvas.Top="32"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="0" Canvas.Top="32"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="0" Canvas.Top="64"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="0" Canvas.Top="96"/>
-            <Rectangle Fill="LightBlue" Width="32" Height="32" Canvas.Left="0" Canvas.Top="128"/>
         </Canvas>
     </Canvas>
 </Window>

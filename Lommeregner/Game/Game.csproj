@@ -6,4 +6,19 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Textures\Stolen_TileTexture.png" />
+    <None Remove="Textures\Stolen_TileTexture_Wood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Player\" />
+    <Folder Include="Sprites\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Textures\Stolen_TileTexture.png" />
+    <Resource Include="Textures\Stolen_TileTexture_Wood.png" />
+  </ItemGroup>
+
 </Project>
