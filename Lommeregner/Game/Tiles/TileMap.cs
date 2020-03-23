@@ -9,19 +9,17 @@ namespace Game.Tiles
 {
     public class TileMap
     {
-        List<Tile> tiles = new List<Tile>();
-        MainWindow mainW;
-        /*Only set from other classes*/
-        private int mapX = 0;
-        private int mapY = 0;
+        readonly MainWindow mainW;
+
+        readonly Tile[,] tileArr;
+
         private int tileSize = 32;
 
-        public TileMap(int mapSizeX,int mapSizeY)
+        public TileMap(int mapSizeX, int mapSizeY)
         {
             mainW = (MainWindow)Application.Current.MainWindow;
-            mapX = mapSizeX;
-            mapY = mapSizeY;
-            InstantiateTiles();
+            tileArr = new Tile[mapSizeX, mapSizeY];
+            MapSetup();
         }
 
         public void Zoom(bool isZoomingIn)
@@ -29,11 +27,13 @@ namespace Game.Tiles
             if (isZoomingIn && tileSize <= 128)
             {
                 tileSize *= 2;
+                mainW.input.moveLength = tileSize;
                 UpdateTiles();
             }
             else if (!isZoomingIn && tileSize >= 8)
             {
                 tileSize /= 2;
+                mainW.input.moveLength = tileSize;
                 UpdateTiles();
             }
         }
@@ -41,44 +41,35 @@ namespace Game.Tiles
         public void UpdateTiles()
         {
             ClearMap();
-            for (int x = 0; x < mapX; x++)
+            MapSetup();
+        }
+
+        public void MapSetup()
+        {
+            for (int x = 0; x < tileArr.GetLength(0); x++)
             {
-                for (int y = 0; y < mapY; y++)
+                for (int y = 0; y < tileArr.GetLength(1); y++)
                 {
                     Tile tempTile = new FloorTile();
                     tempTile.UpdateSize(tileSize);
                     tempTile.SetCoords(x, y);
-                    tiles.Add(tempTile);
+                    tileArr[x, y] = tempTile;
                 }
             }
-            TileInstantiation();
-        }
-
-        public void InstantiateTiles()
-        {
-            for (int x = 0; x < mapX; x++)
+            for (int x = 0; x < tileArr.GetLength(0); x++)
             {
-                for (int y = 0; y < mapY; y++)
+                for (int y = 0; y < tileArr.GetLength(1); y++)
                 {
-                    Tile tempTile = new FloorTile();
-                    tempTile.SetCoords(x, y);
-                    tiles.Add(tempTile);
+                    Panel.SetZIndex(tileArr[x, y].tile, 1);
+                    mainW.MainMap.Children.Add(tileArr[x,y].tile);
                 }
             }
-            TileInstantiation();
         }
 
         void ClearMap()
         {
             mainW.MainMap.Children.Clear();
-            tiles.Clear();
-        }
-        void TileInstantiation()
-        {
-            for (int i = 0; i < tiles.Count; i++)
-            {
-                mainW.MainMap.Children.Add(tiles[i].tile);
-            }
+            mainW.player.Setup(mainW.playerCoordX, mainW.playerCoordY);
         }
 
 

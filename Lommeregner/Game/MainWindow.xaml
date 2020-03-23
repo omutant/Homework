@@ -8,7 +8,18 @@
         Title="MainWindow" Height="656" Width="640"
         KeyDown="RouteKey">
     <Canvas Background="Black">
-        <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="0,0">
+        <Grid x:Name="debugger" HorizontalAlignment="Stretch" Height="200" Visibility="Hidden" Panel.ZIndex="5" Background="#19000000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="Debug panel - Omu_RogueLike" Foreground="LightSalmon" />
+            <TextBox Grid.Row="1" x:Name="debugger_Text"  Width="600" Foreground="Red" FontSize="14" Background="#0CFFFFFF" BorderThickness="0"/>
+            
+        </Grid>
+        <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="-64,-128">
+            
         </Canvas>
     </Canvas>
 </Window>

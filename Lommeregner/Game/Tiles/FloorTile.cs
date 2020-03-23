@@ -6,6 +6,6 @@ namespace Game.Tiles
 {
     class FloorTile : Tile
     {
-        public FloorTile(){ Setup("pack://application:,,,/Textures/Stolen_TileTexture_Wood.png");}
+        public FloorTile(){ Setup("pack://application:,,,/Textures/Stone_Tile_Base.png");}
     }
 }

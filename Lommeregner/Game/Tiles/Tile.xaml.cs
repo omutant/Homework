@@ -23,7 +23,7 @@ namespace Game.Tiles
         private string inputTexture = "";
         private Thickness _margin;
         private ImageBrush _textureBrush;
-        private int _tileSize = 32;
+        private readonly int _tileSize = 32;
 
         public void Setup(string texturePath)
         {
@@ -31,9 +31,7 @@ namespace Game.Tiles
             inputTexture = texturePath;
 
             SetTexture(inputTexture);
-
             UpdateSize(_tileSize);
-            
             SetTileStats();
             
             InitializeComponent();
@@ -46,8 +44,8 @@ namespace Game.Tiles
 
         public void SetCoords(int x, int y)
         {
-            XCoord = x;
-            YCoord = y;
+            xCoord = x;
+            yCoord = y;
             SetTileStats();
             SetMargins();
             //UpdateSize(_tileSize);
@@ -65,27 +63,23 @@ namespace Game.Tiles
 
         void SetMargins()
         {
-            _margin.Left = sizeVal * XCoord;
-            _margin.Top = sizeVal * YCoord;
+            _margin.Left = size * xCoord;
+            _margin.Top = size * yCoord;
             tile.Margin = _margin;
         }
 
         public void SetTileStats()
         {
-            tile.Height = sizeVal;
-            tile.Width = sizeVal;
+            tile.Height = size;
+            tile.Width = size;
             tile.Fill = _textureBrush;
 
             //SetCoords(XCoord, YCoord);
 
             SetMargins();
         }
-        private int sizeVal = 0;
-        private int xVal = 0;
-        private int yVal = 0;
-
-        private int size { get { return sizeVal; } set { sizeVal = value; } }
-        private int XCoord { get { return xVal; } set { xVal = value; } }
-        private int YCoord { get { return yVal; } set { yVal = value; } }
+        private int size = 0;
+        private int xCoord = 0;
+        private int yCoord = 0;
     }
 }

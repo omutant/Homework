@@ -7,18 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Textures\Stolen_TileTexture.png" />
-    <None Remove="Textures\Stolen_TileTexture_Wood.png" />
+    <None Remove="Sprites\Player_Base.png" />
+    <None Remove="Textures\Stone_Tile_Base.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Player\" />
-    <Folder Include="Sprites\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Textures\Stolen_TileTexture.png" />
-    <Resource Include="Textures\Stolen_TileTexture_Wood.png" />
+    <Resource Include="Sprites\Player_Base.png" />
+    <Resource Include="Textures\Stone_Tile_Base.png" />
   </ItemGroup>
 
 </Project>
