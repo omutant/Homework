@@ -74,4 +74,18 @@ namespace Game.Tiles
 
 
     }
+
+    class TxtReader
+    {
+        /* map txt contents
+         
+            #Tile map for a rogue-like made in WPF
+            Title= New Map
+            Description= 
+
+        */
+
+        // void WriteNewMap(int xSize, int ySize) - Fill a map with floor tiles. Write a description of how to edit the map at the top of the document
+        // void ReadMap(string mapName, tile[,] map) - replace the old map contents with the new ones from the doc
+    }
 }

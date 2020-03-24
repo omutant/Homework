@@ -9,7 +9,6 @@ namespace Game
     {
         readonly MainWindow mainW;
 
-
         public Camera()
         {
             mainW = (MainWindow)Application.Current.MainWindow;
@@ -23,18 +22,11 @@ namespace Game
             double botDistance = ((int)mainW.RenderSize.Height - mainW.player.playerOff.Top) -mainW.MainMap.Margin.Top;
             double rightDistance = ((int)mainW.RenderSize.Width - mainW.player.playerOff.Left) - mainW.MainMap.Margin.Left;
 
-            /*
-            double centerX = mainW.RenderSize.Width / 2;
-            double centerY = mainW.RenderSize.Height / 2;
-            mainW.debugger_Text.Text = "distance from center - X:" + ((mainW.playerCoordX * mainW.input.moveLength) - centerX) + " Y: " + ((mainW.playerCoordY * mainW.input.moveLength) - centerY);
-            */
             mainW.debugger_Text.Text = "Distance to edges" +
                 "\nTop: " + topDistance +
                 "\nBottom: " + botDistance +
                 "\nRight: " + rightDistance +
                 "\nLeft: " + leftDistance;
-
-            //FollowCam();
         }
 
         public void FollowCam(int direction)
@@ -69,9 +61,5 @@ namespace Game
             }
             mainW.MainMap.Margin = updatedThicc;
         }
-
-        /*
-            1. Get distance to screen edges 
-        */
     }
 }
