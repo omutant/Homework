@@ -1,0 +1,62 @@
+# Tile map for a rogue-like made in WPF 
+# tiles starting with # will be ignored
+# /NI/ = Not Implemented
+# Available tiles:
+# 0 - Wall tile
+# 1 - Floor tile
+# /NI/ 2 - Water Tile
+# /NI/ 3 - Grass tile
+# Available units:
+# /NI/ N - Null (Can't place items here)
+# /NI/ W - Water (Can only place select items here. Marked with W in the unit description)
+# /NI/ G - Ground (Can only place select items here. Marked with G in the unit description)
+# /NI/ 1 - Player
+# /NI/ 2 - Enemy
+# /NI/ 3 - Goal
+# /NI/ 4 - Health Pickup
+# /NI/ 5 - Breakable box
+# 
+Title= TestingMap
+Description= just a basic map to test if this works
+MapData=
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 0 0 0 0 1 0 1 1 1 1 1 1 1 0
+0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 1 0 1 1 0 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 1 1 1 1 0 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 1 1 0 1 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 1 0 1 1 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 0
+0 1 1 1 1 0 1 0 1 1 1 0 0 0 0 0 0 0 1 0
+0 1 1 1 1 0 1 0 1 1 1 0 1 1 1 1 1 0 1 0
+0 1 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 0 1 0
+0 1 1 1 1 0 1 0 1 1 1 0 1 1 1 1 1 0 1 0
+0 1 1 1 1 0 1 0 1 1 1 0 1 1 1 1 1 0 1 0
+0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 0
+0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 0
+0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+UnitData=
+N N N N N N N N N N N N N N N N N N N N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N G G G G G G G G G G G G G G G G G G N
+N N N N N N N N N N N N N N N N N N N N

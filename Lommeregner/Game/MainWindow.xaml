@@ -18,7 +18,7 @@
             <TextBox Grid.Row="1" x:Name="debugger_Text"  Width="600" Foreground="Red" FontSize="14" Background="#0CFFFFFF" BorderThickness="0"/>
             
         </Grid>
-        <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="-64,-128">
+        <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="0,0">
             
         </Canvas>
     </Canvas>

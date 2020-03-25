@@ -23,6 +23,7 @@ namespace Game
     public partial class MainWindow : Window
     {
         public Input input;
+        public MapReader mapReader;
         public TileMap tileMap;
         public TPlayer player;
         public Camera mainCam;
@@ -36,10 +37,10 @@ namespace Game
         {
             InitializeComponent();
             input = new Input();
+            mapReader = new MapReader();
             tileMap = new TileMap(mapSizeX, mapSizeY);
             player = new TPlayer(playerCoordX, playerCoordY);
             mainCam = new Camera();
-
         }
         public void RouteKey(object sender, KeyEventArgs e)
         {

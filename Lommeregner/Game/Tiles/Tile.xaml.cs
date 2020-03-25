@@ -19,6 +19,7 @@ namespace Game.Tiles
     public partial class Tile : UserControl
     {
         public Rectangle tile;
+        public bool canWalkOn = true;
 
         private string inputTexture = "";
         private Thickness _margin;

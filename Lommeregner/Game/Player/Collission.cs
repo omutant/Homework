@@ -1,18 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Game.Player
 {
-    class Collission
+    public class Collission
     {
-        // Main Check void
-        public void Check()
+        readonly MainWindow mainW;
+        public Collission()
         {
-            // Solids();
+            mainW = (MainWindow)Application.Current.MainWindow;
+        }
+        // Main Check void
+        // Clockwise direction check ( 1 = up. 2 = right. 3 = down. 4 = left)
+        public bool CanMoveCheck(int direction)
+        {
+            bool result;
+            result = Solids(direction);
             // Edge();
             // Pickups();
             // Enemies();
+            return result;
+        }
+
+        bool Solids(int direction){
+            switch (direction)
+            {
+                case 1:
+                    if (mainW.tileMap.tileArr[mainW.playerCoordX, mainW.playerCoordY -1].canWalkOn)
+                        return true;
+                    else
+                        return false;
+                case 2:
+                    if (mainW.tileMap.tileArr[mainW.playerCoordX + 1, mainW.playerCoordY].canWalkOn)
+                        return true;
+                    else
+                        return false;
+                case 3:
+                    if (mainW.tileMap.tileArr[mainW.playerCoordX, mainW.playerCoordY +1].canWalkOn)
+                        return true;
+                    else
+                        return false;
+                case 4:
+                    if(mainW.tileMap.tileArr[mainW.playerCoordX - 1, mainW.playerCoordY].canWalkOn)
+                        return true;
+                    else
+                        return false;
+            }
+            return true;
         }
         // 1. Check for Solid blocks
         /*

@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MapData\TestingMap.txt" />
     <None Remove="Sprites\Player_Base.png" />
     <None Remove="Textures\Stone_Tile_Base.png" />
+    <None Remove="Textures\Stone_Wall_Tile_Base.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="MapData\TestingMap.txt" />
     <Resource Include="Sprites\Player_Base.png" />
     <Resource Include="Textures\Stone_Tile_Base.png" />
+    <Resource Include="Textures\Stone_Wall_Tile_Base.png" />
   </ItemGroup>
 
 </Project>

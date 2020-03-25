@@ -11,32 +11,19 @@ namespace Game.Tiles
     {
         readonly MainWindow mainW;
 
-        readonly Tile[,] tileArr;
+        public Tile[,] tileArr;
 
-        private int tileSize = 32;
+        public int tileSize = 32;
 
         public TileMap(int mapSizeX, int mapSizeY)
         {
             mainW = (MainWindow)Application.Current.MainWindow;
             tileArr = new Tile[mapSizeX, mapSizeY];
+            
             MapSetup();
         }
 
-        public void Zoom(bool isZoomingIn)
-        {
-            if (isZoomingIn && tileSize <= 128)
-            {
-                tileSize *= 2;
-                mainW.input.moveLength = tileSize;
-                UpdateTiles();
-            }
-            else if (!isZoomingIn && tileSize >= 8)
-            {
-                tileSize /= 2;
-                mainW.input.moveLength = tileSize;
-                UpdateTiles();
-            }
-        }
+
 
         public void UpdateTiles()
         {
@@ -46,14 +33,30 @@ namespace Game.Tiles
 
         public void MapSetup()
         {
+            //mainW.mapReader.ReadMap("TestingMap");
             for (int x = 0; x < tileArr.GetLength(0); x++)
             {
                 for (int y = 0; y < tileArr.GetLength(1); y++)
                 {
-                    Tile tempTile = new FloorTile();
-                    tempTile.UpdateSize(tileSize);
-                    tempTile.SetCoords(x, y);
-                    tileArr[x, y] = tempTile;
+                    tileArr[x, y] = mainW.mapReader.GetTile(x,y);
+                    //Tile tempTile;
+                    // Replace this line with _mapReader.GetTile(x,y)
+                    /*
+                    if (x == 0 || y == 0 || x == tileArr.GetLength(0) -1 || y == tileArr.GetLength(1) -1)
+                    {
+                        tempTile = new WallTile();
+                    }
+                    else
+                    {
+                        tempTile = new FloorTile();
+                    }
+                    */
+                    tileArr[x, y].UpdateSize(tileSize);
+                    tileArr[x, y].SetCoords(x,y);
+
+                    //tempTile.UpdateSize(tileSize);
+                    //tempTile.SetCoords(x, y);
+                    //tileArr[x, y] = tempTile;
                 }
             }
             for (int x = 0; x < tileArr.GetLength(0); x++)
@@ -71,21 +74,5 @@ namespace Game.Tiles
             mainW.MainMap.Children.Clear();
             mainW.player.Setup(mainW.playerCoordX, mainW.playerCoordY);
         }
-
-
-    }
-
-    class TxtReader
-    {
-        /* map txt contents
-         
-            #Tile map for a rogue-like made in WPF
-            Title= New Map
-            Description= 
-
-        */
-
-        // void WriteNewMap(int xSize, int ySize) - Fill a map with floor tiles. Write a description of how to edit the map at the top of the document
-        // void ReadMap(string mapName, tile[,] map) - replace the old map contents with the new ones from the doc
     }
 }
