@@ -13,43 +13,35 @@ using System.Windows.Shapes;
 
 namespace Game.Tiles
 {
-    /// <summary>
-    /// Interaction logic for Tile.xaml
-    /// </summary>
-    public partial class Tile : UserControl
+    public class Tile
     {
+        public void SetTileSize(int newSize) => _size = newSize;
         public Rectangle tile;
-        public bool canWalkOn = true;
+        public bool isSolid = false;
 
-        private string inputTexture = "";
         private Thickness _margin;
         private ImageBrush _textureBrush;
         private readonly int _tileSize = 32;
+        private int _size = 0;
+        private int _xCoord = 0;
+        private int _yCoord = 0;
 
-        public void Setup(string texturePath)
+        public void NewTile(string texturePath)
         {
-            tile = new Rectangle();
-            inputTexture = texturePath;
-
-            SetTexture(inputTexture);
-            UpdateSize(_tileSize);
-            SetTileStats();
-            
-            InitializeComponent();
-        }
-
-        public void UpdateSize(int newSize)
-        {
-            size = newSize;
+            SetTileSize(_tileSize);
+            SetTexture(texturePath);
+            tile = new Rectangle() 
+            { 
+                Fill = _textureBrush
+            };
+            UpdateTile();
         }
 
         public void SetCoords(int x, int y)
         {
-            xCoord = x;
-            yCoord = y;
-            SetTileStats();
-            SetMargins();
-            //UpdateSize(_tileSize);
+            _xCoord = x;
+            _yCoord = y;
+            UpdateTile();
         }
 
         public void SetTexture(string texturePath)
@@ -62,25 +54,15 @@ namespace Game.Tiles
             _textureBrush.ImageSource = textureImg;
         }
 
-        void SetMargins()
+        public void UpdateTile()
         {
-            _margin.Left = size * xCoord;
-            _margin.Top = size * yCoord;
+            tile.Height = _size;
+            tile.Width = _size;
+            tile.Fill = _textureBrush;
+            _margin.Left = _size * _xCoord;
+            _margin.Top = _size * _yCoord;
             tile.Margin = _margin;
         }
 
-        public void SetTileStats()
-        {
-            tile.Height = size;
-            tile.Width = size;
-            tile.Fill = _textureBrush;
-
-            //SetCoords(XCoord, YCoord);
-
-            SetMargins();
-        }
-        private int size = 0;
-        private int xCoord = 0;
-        private int yCoord = 0;
     }
 }

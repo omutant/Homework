@@ -7,65 +7,122 @@ namespace Game.Player
 {
     public class Collission
     {
-        readonly MainWindow mainW;
-        public Collission()
-        {
-            mainW = (MainWindow)Application.Current.MainWindow;
-        }
-        // Main Check void
-        // Clockwise direction check ( 1 = up. 2 = right. 3 = down. 4 = left)
+        readonly MainWindow _mainW;
+        public Collission() => _mainW = (MainWindow)Application.Current.MainWindow;
         public bool CanMoveCheck(int direction)
         {
-            bool result;
-            result = Solids(direction);
-            // Edge();
-            // Pickups();
-            // Enemies();
-            return result;
+            return
+                Edge(direction) &&
+                Solids(direction) &&
+                Pickups(direction) &&
+                Enemies(direction)
+                ? true : false;
         }
-
-        bool Solids(int direction){
+        bool Edge(int direction)
+        {
+            int px = _mainW.playerCoordX;
+            int py = _mainW.playerCoordY;
             switch (direction)
             {
-                case 1:
-                    if (mainW.tileMap.tileArr[mainW.playerCoordX, mainW.playerCoordY -1].canWalkOn)
-                        return true;
-                    else
-                        return false;
-                case 2:
-                    if (mainW.tileMap.tileArr[mainW.playerCoordX + 1, mainW.playerCoordY].canWalkOn)
-                        return true;
-                    else
-                        return false;
-                case 3:
-                    if (mainW.tileMap.tileArr[mainW.playerCoordX, mainW.playerCoordY +1].canWalkOn)
-                        return true;
-                    else
-                        return false;
-                case 4:
-                    if(mainW.tileMap.tileArr[mainW.playerCoordX - 1, mainW.playerCoordY].canWalkOn)
-                        return true;
-                    else
-                        return false;
+                case 1: return py > 0 ? true : false;
+                case 2: return px < _mainW.mapSizeX - 1 ? true : false;
+                case 3: return py < _mainW.mapSizeY - 1 ? true : false;
+                case 4: return px > 0 ? true : false;
+                default: break;
+            }
+            return false;
+        }
+        bool Solids(int direction)
+        {
+            int px = _mainW.playerCoordX;
+            int py = _mainW.playerCoordY;
+            switch (direction)
+            {
+                case 1: return !_mainW.tileMap.tileArr[px, py - 1].isSolid ? true : false;
+                case 2: return !_mainW.tileMap.tileArr[px + 1, py].isSolid ? true : false;
+                case 3: return !_mainW.tileMap.tileArr[px, py + 1].isSolid ? true : false;
+                case 4: return !_mainW.tileMap.tileArr[px - 1, py].isSolid ? true : false;
+                default: break;
             }
             return true;
         }
-        // 1. Check for Solid blocks
-        /*
-            get player coordinates --> get block at the index the player wants to move to --> reject move if(map[x,y].tile.isSolid == true)
-        */
-        // 2. Check for map Edge
-        /*
-            get map size --> get player coordinates --> reject move if(player.coordinates >= map.size)
-        */
-        // 3. Check for Check for pickups
-        /*
-            get player coordinates --> get block at the index the player wants to move to --> allow move if(map[x,y].tile.hasPickup == true)
-            --> apply pickup to player --> remove pickup from tile --> set map[x,y].tile.hasPickup to false
-        */
-        // 4. Check for Check for Enemies
-        /*
-            get play coordinates -->
-        */
+        bool Pickups(int direction)
+        {
+            int px = _mainW.playerCoordX;
+            int py = _mainW.playerCoordY;
+            switch (direction)
+            {
+                case 1:
+                    if (_mainW.tileMap.objArr[px, py - 1] != null)
+                        _mainW.tileMap.objArr[px, py - 1].Take();
+                    return true;
+                case 2:
+                    if (_mainW.tileMap.objArr[px + 1, py] != null)
+                        _mainW.tileMap.objArr[px + 1, py].Take();
+                    return true;
+                case 3:
+                    if (_mainW.tileMap.objArr[px, py + 1] != null)
+                        _mainW.tileMap.objArr[px, py + 1].Take();
+                    return true;
+                case 4:
+                    if (_mainW.tileMap.objArr[px - 1, py] != null)
+                        _mainW.tileMap.objArr[px - 1, py].Take();
+                    return true;
+            }
+            return true;
+        }
+        bool Enemies(int direction)
+        {
+            int px = _mainW.playerCoordX;
+            int py = _mainW.playerCoordY;
+            switch (direction)
+            {
+                case 1:
+                    if (_mainW.tileMap.enemyArr[px, py - 1] != null)
+                    {
+                        if (_mainW.tileMap.enemyArr[px, py - 1].isSolid)
+                        {
+                            _mainW.tileMap.enemyArr[px, py - 1] =
+                            _mainW.tileMap.enemyArr[px, py - 1].Punch();
+                            return false;
+                        }
+                    }
+                    return true;
+                case 2:
+                    if (_mainW.tileMap.enemyArr[px + 1, py] != null)
+                    {
+                        if (_mainW.tileMap.enemyArr[px + 1, py].isSolid)
+                        {
+                            _mainW.tileMap.enemyArr[px + 1, py] =
+                            _mainW.tileMap.enemyArr[px + 1, py].Punch();
+                            return false;
+                        }
+                    }
+                    return true;
+                case 3:
+                    if (_mainW.tileMap.enemyArr[px, py + 1] != null)
+                    {
+                        if (_mainW.tileMap.enemyArr[px, py + 1].isSolid)
+                        {
+                            _mainW.tileMap.enemyArr[px, py + 1] =
+                            _mainW.tileMap.enemyArr[px, py + 1].Punch();
+                            return false;
+                        }
+                    }
+                    return true;
+                case 4:
+                    if (_mainW.tileMap.enemyArr[px - 1, py] != null)
+                    {
+                        if (_mainW.tileMap.enemyArr[px - 1, py].isSolid)
+                        {
+                            _mainW.tileMap.enemyArr[px - 1, py] =
+                            _mainW.tileMap.enemyArr[px - 1, py].Punch();
+                            return false;
+                        }
+                    }
+                    return true;
+            }
+            return true;
+        }
     }
 }

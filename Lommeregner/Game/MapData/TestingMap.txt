@@ -1,4 +1,4 @@
-# Tile map for a rogue-like made in WPF 
+# Tile map for a rogue-like made in WPF 0
 # tiles starting with # will be ignored
 # /NI/ = Not Implemented
 # Available tiles:
@@ -13,8 +13,8 @@
 # /NI/ 1 - Player
 # /NI/ 2 - Enemy
 # /NI/ 3 - Goal
-# /NI/ 4 - Health Pickup
-# /NI/ 5 - Breakable box
+# 4 - Health Pickup
+# 5 - Breakable barrel
 # 
 Title= TestingMap
 Description= just a basic map to test if this works
@@ -41,22 +41,22 @@ MapData=
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 UnitData=
 N N N N N N N N N N N N N N N N N N N N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
-N G G G G G G G G G G G G G G G G G G N
+N 5 G G G G G G G G G G G G G G G G G N
+N G 5 G G N N N N N G N G G G G G G G N
+N G G G G G G G G G G N G G G G G G G N
+N 5 G G G N G G N G G N G G G G G G G N
+N 5 G G G N G G G G G N G G G G G G G N
+N G G G G N G G G G N G G G G 4 G G G N
+N G G G G N G G G N G G G G G 4 G G G N
+N G G G G N G G N G G G 4 G G G G G G N
+N G G G G N G N G G G G 4 G G G G G G N
+N G G G G N G N G G G G G G G G G G G N
+N G G G G N G N G G G N N N N N N N G N
+N G G G G N G N G G G N G G G G G N G N
+N G G G G N G N G G G G G G G G G N G N
+N G G G G N G N G G G N G G G G G N G N
+N G G G G N G N G G G N G G G G G N G N
+N G G G G G G G G G G N G G G G G N G N
+N G G G G G G G G G G N N N N N N N G N
 N G G G G G G G G G G G G G G G G G G N
 N N N N N N N N N N N N N N N N N N N N

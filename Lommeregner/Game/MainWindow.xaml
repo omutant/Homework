@@ -13,13 +13,24 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            
+
             <TextBlock Grid.Row="0" Text="Debug panel - Omu_RogueLike" Foreground="LightSalmon" />
             <TextBox Grid.Row="1" x:Name="debugger_Text"  Width="600" Foreground="Red" FontSize="14" Background="#0CFFFFFF" BorderThickness="0"/>
-            
         </Grid>
-        <Canvas x:Name="MainMap" Background="Black" Panel.ZIndex="1" Width="640" Height="640" Margin="0,0">
-            
+
+        <Grid x:Name="winScreen" Height="143" Width="640" Visibility="Hidden" Panel.ZIndex="4" Background="#7CA6F6CC" Canvas.Bottom="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="!!!YOU WIN!!!" FontSize="60" HorizontalAlignment="Center"></TextBlock>
+            <Button Grid.Row="1" Content="Press this button to quit game" FontSize="20" Click="EndGame" Background="#99DDDDDD"></Button>
+
+        </Grid>
+
+        <Canvas x:Name="MainMap" Background="#83000000" Panel.ZIndex="1" Width="640" Height="640" Margin="0,0">
+
         </Canvas>
     </Canvas>
 </Window>

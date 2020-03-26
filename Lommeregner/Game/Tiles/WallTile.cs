@@ -7,8 +7,8 @@ namespace Game.Tiles
     class WallTile : Tile
     {
         public WallTile() {
-            canWalkOn = false;
-            Setup("pack://application:,,,/Textures/Stone_Wall_Tile_Base.png"); 
+            isSolid = true;
+            NewTile("pack://application:,,,/Textures/Stone_Wall_Tile_Base.png"); 
         }
     }
 }

@@ -45,14 +45,11 @@ namespace Game
         public void RouteKey(object sender, KeyEventArgs e)
         {
             input.KeyHandler(e.Key);
-            /*
-            if (playerCoordX * input.moveLength > RenderSize.Width - input.moveLength ||
-                playerCoordX * input.moveLength < 0 ||
-                playerCoordY * input.moveLength > RenderSize.Height - input.moveLength ||
-                playerCoordY * input.moveLength < 0) 
-            */
-            //MessageBox.Show("You moving off the screen! -- " + (playerCoordX * input.moveLength) + " : " + (RenderSize.Width - input.moveLength));
-            //MessageBox.Show( RenderSize.Width.GetType() + " : " + RenderSize.Height);
+        }
+
+        public void EndGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

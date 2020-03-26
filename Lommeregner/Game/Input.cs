@@ -31,47 +31,35 @@ namespace Game
             {
                 #region moveCam
                 case Key.Left:
-                    if (mainW.playerCoordX > 0)
+                    if (colCheck.CanMoveCheck(4))
                     {
-                        if (colCheck.CanMoveCheck(4))
-                        {
-                            mainW.mainCam.FollowCam(2);
-                            mapOffset.Left -= moveLength;
-                            mainW.player.Move(-moveLength, true);
-                        }
+                        mainW.mainCam.FollowCam(2);
+                        mapOffset.Left -= moveLength;
+                        mainW.player.Move(-moveLength, true);
                     }
                     break;
                 case Key.Right:
-                    if (mainW.playerCoordX < mainW.mapSizeX - 1)
+                    if (colCheck.CanMoveCheck(2))
                     {
-                        if (colCheck.CanMoveCheck(2))
-                        {
-                            mainW.mainCam.FollowCam(4);
-                            mapOffset.Left += moveLength;
-                            mainW.player.Move(moveLength, true);
-                        }
+                        mainW.mainCam.FollowCam(4);
+                        mapOffset.Left += moveLength;
+                        mainW.player.Move(moveLength, true);
                     }
                     break;
                 case Key.Up:
-                    if (mainW.playerCoordY > 0)
+                    if (colCheck.CanMoveCheck(1))
                     {
-                        if (colCheck.CanMoveCheck(1))
-                        {
-                            mainW.mainCam.FollowCam(1);
-                            mapOffset.Top -= moveLength;
-                            mainW.player.Move(-moveLength, false);
-                        }
+                        mainW.mainCam.FollowCam(1);
+                        mapOffset.Top -= moveLength;
+                        mainW.player.Move(-moveLength, false);
                     }
                     break;
                 case Key.Down:
-                    if (mainW.playerCoordY < mainW.mapSizeY - 1)
+                    if (colCheck.CanMoveCheck(3))
                     {
-                        if (colCheck.CanMoveCheck(3))
-                        {
-                            mainW.mainCam.FollowCam(3);
-                            mapOffset.Top += moveLength;
-                            mainW.player.Move(moveLength, false);
-                        }
+                        mainW.mainCam.FollowCam(3);
+                        mapOffset.Top += moveLength;
+                        mainW.player.Move(moveLength, false);
                     }
                     break;
                 #endregion moveCam
@@ -85,7 +73,7 @@ namespace Game
                 #endregion zoomCam
                 #region debugger
                 case Key.F12:
-                    if(mainW.debugger.Visibility == Visibility.Visible)
+                    if (mainW.debugger.Visibility == Visibility.Visible)
                     {
                         mainW.debugger.Visibility = Visibility.Hidden;
                     }

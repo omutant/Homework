@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Remove="MapData\TestingMap.txt" />
+    <None Remove="Sprites\Barrel_Enemy.png" />
+    <None Remove="Sprites\Health_Pickup.png" />
     <None Remove="Sprites\Player_Base.png" />
     <None Remove="Textures\Stone_Tile_Base.png" />
     <None Remove="Textures\Stone_Wall_Tile_Base.png" />
@@ -15,6 +17,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="MapData\TestingMap.txt" />
+    <Resource Include="Sprites\Barrel_Enemy.png" />
+    <Resource Include="Sprites\Health_Pickup.png" />
     <Resource Include="Sprites\Player_Base.png" />
     <Resource Include="Textures\Stone_Tile_Base.png" />
     <Resource Include="Textures\Stone_Wall_Tile_Base.png" />

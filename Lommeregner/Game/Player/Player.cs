@@ -11,35 +11,37 @@ namespace Game.Player
 {
     public class TPlayer
     {
-        readonly MainWindow mainW;
-        Rectangle playerRect;
+        public Thickness playerOffset;
+
+        readonly MainWindow _mainW;
+        Rectangle _playerRect;
         ImageBrush _textureBrush;
-        public Thickness playerOff;
+
         public TPlayer(int x, int y)
         {
-            mainW = (MainWindow)Application.Current.MainWindow;
-            Setup(x,y);
+            _mainW = (MainWindow)Application.Current.MainWindow;
+            Setup(x, y);
         }
 
         public void Setup(int x, int y)
         {
-            playerRect = new Rectangle();
-
-            SetMargin(x,y);
+            SetMargin(x, y);
             SetTexture();
-            playerRect.Width = mainW.input.moveLength;
-            playerRect.Height = mainW.input.moveLength;
-            playerRect.Margin = playerOff;
-            playerRect.Fill = _textureBrush;
-            Panel.SetZIndex(playerRect, 2);
-
-            mainW.MainMap.Children.Add(playerRect);
+            _playerRect = new Rectangle()
+            {
+                Width = _mainW.input.moveLength,
+                Height = _mainW.input.moveLength,
+                Margin = playerOffset,
+                Fill = _textureBrush
+            };
+            Panel.SetZIndex(_playerRect, 3);
+            _mainW.MainMap.Children.Add(_playerRect);
         }
 
         void SetMargin(int x, int y)
         {
-            playerOff.Left = mainW.input.moveLength * x;
-            playerOff.Top = mainW.input.moveLength * y;
+            playerOffset.Left = _mainW.input.moveLength * x;
+            playerOffset.Top = _mainW.input.moveLength * y;
         }
         void SetTexture()
         {
@@ -53,15 +55,17 @@ namespace Game.Player
 
         public void Move(int offset, bool isMovingHorizontal)
         {
-            if (isMovingHorizontal){
-                playerOff.Left += offset;
-                mainW.playerCoordX = (int)(playerOff.Left / mainW.input.moveLength);
+            if (isMovingHorizontal)
+            {
+                playerOffset.Left += offset;
+                _mainW.playerCoordX = (int)(playerOffset.Left / _mainW.input.moveLength);
             }
-            else{
-                playerOff.Top += offset;
-                mainW.playerCoordY = (int)(playerOff.Top / mainW.input.moveLength);
+            else
+            {
+                playerOffset.Top += offset;
+                _mainW.playerCoordY = (int)(playerOffset.Top / _mainW.input.moveLength);
             }
-            playerRect.Margin = playerOff;
+            _playerRect.Margin = playerOffset;
         }
     }
 }
