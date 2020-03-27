@@ -26,7 +26,7 @@ namespace Game
         }
         public void KeyHandler(Key input)
         {
-            //MessageBox.Show(e.Key.ToString());
+            //MessageBox.Show(input.ToString());
             switch (input)
             {
                 #region moveCam
@@ -35,7 +35,7 @@ namespace Game
                     {
                         mainW.mainCam.FollowCam(2);
                         mapOffset.Left -= moveLength;
-                        mainW.player.Move(-moveLength, true);
+                        mainW.player.Move(-moveLength, true, mainW.player.isDead);
                     }
                     break;
                 case Key.Right:
@@ -43,7 +43,7 @@ namespace Game
                     {
                         mainW.mainCam.FollowCam(4);
                         mapOffset.Left += moveLength;
-                        mainW.player.Move(moveLength, true);
+                        mainW.player.Move(moveLength, true, mainW.player.isDead);
                     }
                     break;
                 case Key.Up:
@@ -51,7 +51,7 @@ namespace Game
                     {
                         mainW.mainCam.FollowCam(1);
                         mapOffset.Top -= moveLength;
-                        mainW.player.Move(-moveLength, false);
+                        mainW.player.Move(-moveLength, false, mainW.player.isDead);
                     }
                     break;
                 case Key.Down:
@@ -59,7 +59,7 @@ namespace Game
                     {
                         mainW.mainCam.FollowCam(3);
                         mapOffset.Top += moveLength;
-                        mainW.player.Move(moveLength, false);
+                        mainW.player.Move(moveLength, false, mainW.player.isDead);
                     }
                     break;
                 #endregion moveCam
@@ -82,7 +82,14 @@ namespace Game
                         mainW.debugger.Visibility = Visibility.Visible;
                     }
                     break;
-                    #endregion debugger
+                #endregion debugger
+                #region specials
+                case Key.Enter:
+                case Key.Escape:
+                    if (mainW.player.isDead)
+                        Application.Current.Shutdown();
+                    break;
+                    #endregion specials
             }
             mainW.mainCam.DebuggerUpdate();
         }

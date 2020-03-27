@@ -23,8 +23,8 @@ namespace Game.Tiles
         private ImageBrush _textureBrush;
         private readonly int _tileSize = 32;
         private int _size = 0;
-        private int _xCoord = 0;
-        private int _yCoord = 0;
+        protected int _xCoord = 0;
+        protected int _yCoord = 0;
 
         public void NewTile(string texturePath)
         {
@@ -56,12 +56,15 @@ namespace Game.Tiles
 
         public void UpdateTile()
         {
-            tile.Height = _size;
-            tile.Width = _size;
-            tile.Fill = _textureBrush;
-            _margin.Left = _size * _xCoord;
-            _margin.Top = _size * _yCoord;
-            tile.Margin = _margin;
+            if(tile != null)
+            {
+                tile.Height = _size;
+                tile.Width = _size;
+                tile.Fill = _textureBrush;
+                _margin.Left = _size * _xCoord;
+                _margin.Top = _size * _yCoord;
+                tile.Margin = _margin;
+            }
         }
 
     }

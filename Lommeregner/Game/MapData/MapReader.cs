@@ -19,7 +19,7 @@ namespace Game.Tiles
         readonly MainWindow _mainW;
         readonly string[] _properties = { "Title", "Description", "MapData", "UnitData" };
         readonly Tile[,] _tempTileArr;
-        readonly Pickup[,] _tempObjArr;
+        public Pickup[,] _tempObjArr;
         readonly Enemy[,] _tempEnemyArr;
         public MapReader()
         {
@@ -95,7 +95,7 @@ namespace Game.Tiles
         public void ReadMap(string mapSelection)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            string tempPath = "Game.MapData." + mapSelection + ".txt";
+            string tempPath = "Game.MapData.Maps." + mapSelection + ".txt";
             StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(tempPath));
             string output;
 
@@ -138,6 +138,12 @@ namespace Game.Tiles
             for (int x = 0; x < inputs.Length; x++)
                 switch (inputs[x])
                 {
+                    case "2":
+                        _tempEnemyArr[x, y] = new Orc();
+                        break;
+                    case "3":
+                        _tempObjArr[x, y] = new Goal();
+                        break;
                     case "4":
                         _tempObjArr[x, y] = new Health_Pickup();
                         break;

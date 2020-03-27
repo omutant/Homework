@@ -8,8 +8,10 @@ namespace Game.Enemies
 {
     public abstract class Enemy : Tile
     {
-        protected int health = 1;
+        public int maxHealth = 10;
+        public int health = 10;
+        public int strength = 0;
 
-        public abstract Enemy Punch();
+        public abstract Enemy Punch(int damage);
     }
 }

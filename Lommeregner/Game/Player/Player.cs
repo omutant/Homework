@@ -16,11 +16,32 @@ namespace Game.Player
         readonly MainWindow _mainW;
         Rectangle _playerRect;
         ImageBrush _textureBrush;
+        public int maxHealth = 30;
+        public int pHealth = 30;
+        public bool isDead = false;
+        private readonly int _strength = 4;
 
         public TPlayer(int x, int y)
         {
             _mainW = (MainWindow)Application.Current.MainWindow;
+            _mainW.Player_Healthbar.Maximum = pHealth;
+            _mainW.Player_Healthbar.Value = pHealth;
             Setup(x, y);
+        }
+
+        public int Attack(int health, int attack)
+        {
+            pHealth -= attack;
+            _mainW.Player_Healthbar.Value = pHealth;
+            if (pHealth <= 0)
+            {
+                _mainW.winText.Text = ":C You died :C";
+                _mainW.winScreen.Visibility = Visibility.Visible;
+                _mainW.UI.Visibility = Visibility.Hidden;
+                isDead = true;
+
+            }
+            return health - _strength;
         }
 
         public void Setup(int x, int y)
@@ -53,18 +74,19 @@ namespace Game.Player
             _textureBrush.ImageSource = textureImg;
         }
 
-        public void Move(int offset, bool isMovingHorizontal)
+        public void Move(int offset, bool isMovingHorizontal, bool isDead)
         {
-            if (isMovingHorizontal)
-            {
-                playerOffset.Left += offset;
-                _mainW.playerCoordX = (int)(playerOffset.Left / _mainW.input.moveLength);
-            }
-            else
-            {
-                playerOffset.Top += offset;
-                _mainW.playerCoordY = (int)(playerOffset.Top / _mainW.input.moveLength);
-            }
+            if (!isDead)
+                if (isMovingHorizontal)
+                {
+                    playerOffset.Left += offset;
+                    _mainW.playerCoordX = (int)(playerOffset.Left / _mainW.input.moveLength);
+                }
+                else
+                {
+                    playerOffset.Top += offset;
+                    _mainW.playerCoordY = (int)(playerOffset.Top / _mainW.input.moveLength);
+                }
             _playerRect.Margin = playerOffset;
         }
     }

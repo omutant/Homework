@@ -33,6 +33,8 @@ namespace Lommeregner.Basic_Calc
                     return (num1 + num2).ToString();
                 case '-':
                     return (num1 - num2).ToString();
+                default:
+                    break;
             }
             return "";
         }
@@ -110,7 +112,7 @@ namespace Lommeregner.Basic_Calc
         }
         string SymbolSearch(string[] input)
         {
-            string symbol = "";
+            string symbol;
             IList<string> calcParts = (IList<string>)input;
             try
             {
