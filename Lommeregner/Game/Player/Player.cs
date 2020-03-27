@@ -26,6 +26,7 @@ namespace Game.Player
             _mainW = (MainWindow)Application.Current.MainWindow;
             _mainW.Player_Healthbar.Maximum = pHealth;
             _mainW.Player_Healthbar.Value = pHealth;
+            _mainW.playerNameText.Text = "You : " + pHealth;
             Setup(x, y);
         }
 
@@ -33,6 +34,7 @@ namespace Game.Player
         {
             pHealth -= attack;
             _mainW.Player_Healthbar.Value = pHealth;
+            _mainW.playerNameText.Text = "You : " + pHealth;
             if (pHealth <= 0)
             {
                 _mainW.winText.Text = ":C You died :C";
@@ -46,6 +48,10 @@ namespace Game.Player
 
         public void Setup(int x, int y)
         {
+            isDead = false;
+            pHealth = maxHealth;
+            _mainW.playerCoordX = x;
+            _mainW.playerCoordY = y;
             SetMargin(x, y);
             SetTexture();
             _playerRect = new Rectangle()

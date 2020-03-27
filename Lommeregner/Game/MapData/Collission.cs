@@ -103,6 +103,7 @@ namespace Game.Player
                 {
                     _mainW.Enemy_Healthbar.Maximum = target.maxHealth;
                     _mainW.Enemy_Healthbar.Value = target.health;
+                    _mainW.enemyNameText.Text = target.name + " : " + target.health;
                     
                     _mainW.tileMap.enemyArr[px, py] =
                     target.Punch(_mainW.player.Attack(target.health,

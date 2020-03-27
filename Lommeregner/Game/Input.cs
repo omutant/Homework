@@ -31,6 +31,7 @@ namespace Game
             {
                 #region moveCam
                 case Key.Left:
+                case Key.A:
                     if (colCheck.CanMoveCheck(4))
                     {
                         mainW.mainCam.FollowCam(2);
@@ -39,6 +40,7 @@ namespace Game
                     }
                     break;
                 case Key.Right:
+                case Key.D:
                     if (colCheck.CanMoveCheck(2))
                     {
                         mainW.mainCam.FollowCam(4);
@@ -47,6 +49,7 @@ namespace Game
                     }
                     break;
                 case Key.Up:
+                case Key.W:
                     if (colCheck.CanMoveCheck(1))
                     {
                         mainW.mainCam.FollowCam(1);
@@ -55,6 +58,7 @@ namespace Game
                     }
                     break;
                 case Key.Down:
+                case Key.S:
                     if (colCheck.CanMoveCheck(3))
                     {
                         mainW.mainCam.FollowCam(3);
@@ -72,7 +76,7 @@ namespace Game
                     break;
                 #endregion zoomCam
                 #region debugger
-                case Key.F12:
+                case Key.I:
                     if (mainW.debugger.Visibility == Visibility.Visible)
                     {
                         mainW.debugger.Visibility = Visibility.Hidden;
@@ -85,9 +89,14 @@ namespace Game
                 #endregion debugger
                 #region specials
                 case Key.Enter:
-                case Key.Escape:
                     if (mainW.player.isDead)
-                        Application.Current.Shutdown();
+                        mainW.Reset();
+                    break;
+                case Key.R:
+                    mainW.Reset();
+                    break;
+                case Key.Escape:
+                    Application.Current.Shutdown();
                     break;
                     #endregion specials
             }

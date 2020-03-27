@@ -17,7 +17,12 @@ namespace Game
 
         public void DebuggerUpdate()
         {
-            mainW.debugger_Text.Text = "Nothing to debug";
+            mainW.debugger_Text.Text = 
+                "Controls: \n" +
+                " WASD Or Arrow keys - Move \n" +
+                " R - Reset - \n" +
+                " Plus or minus on numpad - Zoom \n" +
+                " I - Toggle this screen";
         }
         public void Zoom(bool isZoomingIn)
         {

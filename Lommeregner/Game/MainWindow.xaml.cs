@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Game
 {
@@ -30,11 +31,15 @@ namespace Game
 
         public int mapSizeX = 20;
         public int mapSizeY = 20;
+        private readonly int _playerOriginX = 0;
+        private readonly int _playerOriginY = 0;
         public int playerCoordX = 4;
         public int playerCoordY = 4;
 
         public MainWindow()
         {
+            _playerOriginX = playerCoordX;
+            _playerOriginY = playerCoordY;
             InitializeComponent();
             input = new Input();
             mapReader = new MapReader();
@@ -47,9 +52,25 @@ namespace Game
             input.KeyHandler(e.Key);
         }
 
+        public void Reset()
+        {
+            MainMap.Children.Clear();
+            mapReader = new MapReader();
+            tileMap = new TileMap(mapSizeX, mapSizeY);
+            player.Setup(_playerOriginX, _playerOriginY);
+            winScreen.Visibility = Visibility.Hidden;
+            UI.Visibility = Visibility.Visible;
+            Player_Healthbar.Value = player.maxHealth;
+            Enemy_Healthbar.Value = 0;
+            /* Hard reset
+                Process.Start("Game");
+                Application.Current.Shutdown();
+            */
+        }
+
         public void EndGame(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            Reset();
         }
     }
 }
